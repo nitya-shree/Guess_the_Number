@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guess the Number</title>
+    <style>
+        body {
+            font-family:'Times New Roman', Times, serif;
+            background: linear-gradient(to right, #f6a14d, #fab2b2);
+            text-align: center;
+            padding: 100px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 40px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 18px;
+            width: 100px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #145217;
+        }
+
+        p {
+            font-size: 20px;
+            color: #555;
+        }
+
+        #score {
+            font-weight: bold;
+            color: #000;
+        }
+
+        #res {
+            margin-top: 20px;
+            font-size: 22px;
+            color: #040505;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Guess the Number</h1>
+<input id="guessnum" type="number" min="1" max="10" placeholder="1-10">
+<button onclick="check()">Check</button>
+<p id="res">You are right/wrong</p>
+<p id="score">Score: 10</p>
+
+<script>
+var guessnum = document.getElementById("guessnum")
+var res = document.getElementById("res")
+var randomnum = Math.floor(Math.random() * 10) + 1
+var score = document.getElementById("score")
+var total = 10
+
+function check() {
+    var enternum = Number(guessnum.value)
+    if (randomnum === enternum) {
+        res.textContent = "You are Right"
+        alert("YOU WON!!!")
+    } else {
+        total -= 1
+        score.textContent = "Score: " + total
+        if (total == 0) {
+            alert("YOU HAVE LOST")
+        }
+        res.textContent = "You are Wrong"
+    }
+}
+</script>
+
+</body>
+</html>
